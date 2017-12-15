@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<atlassian-plugin key="${atlassian.plugin.key}" name="${project.name}" plugins-version="2">
+    <plugin-info>
+        <description>${project.description}</description>
+        <version>${project.version}</version>
+        <vendor name="${project.organization.name}" url="${project.organization.url}" />
+        <param name="plugin-icon">images/pluginIcon.png</param>
+        <param name="plugin-logo">images/pluginLogo.png</param>
+    </plugin-info>
+    <!-- add our i18n resource -->
+    <resource type="i18n" name="i18n" location="worklog-control" />
+    <!-- add our web resources -->
+    <web-resource key="worklog-control-resources" name="worklog-control Web Resources">
+        <dependency>com.atlassian.auiplugin:ajs</dependency>
+        <resource type="download" name="worklog-control.css" location="/css/worklog-control.css" />
+        <resource type="download" name="worklog-control.js" location="/js/worklog-control.js" />
+        <resource type="download" name="images/" location="/images" />
+        <context>worklog-control</context>
+    </web-resource>
+    <!-- Worklog Control Webwork -->
+    <webwork1 key="worklog-control-webwork" name="Worklog Control Webwork" i18n-name-key="worklog-control-webwork.name">
+        <description key="worklog-control-webwork.description">The Worklog Control Webwork Plugin</description>
+        <actions>
+            <action name="ch.yme.jira.plugins.worklogcontrol.webwork.WorklogControlWebworkAction" alias="WorklogControl">
+                <view name="success">/templates/worklog-control-webwork/dashboard.vm</view>
+                <view name="error">/templates/worklog-control-webwork/error.vm</view>
+            </action>
+        </actions>
+    </webwork1>
+</atlassian-plugin>

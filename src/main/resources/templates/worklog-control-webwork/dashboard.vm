@@ -1,0 +1,52 @@
+<!-- Include resources (css, js, ...) -->
+$webResourceManager.requireResource("ch.yme.jira.plugins.worklog-control:worklog-control-resources")
+
+<html>
+<head>
+    <title>Worklog Control</title>
+</head>
+
+<body>
+
+<div id="container">
+    <h1>Worklog Control - Dashboard</h1>
+
+    <table id="issuetable">
+        <thead>
+        <tr class="rowHeader">
+            <th class="colHeaderLink">User Name</th>
+            <th class="colHeaderLink">Email Address</th>
+            <th class="colHeaderLink">Status</th>
+            <th class="colHeaderLink">Hours</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        <tr class="issuerow">
+            <td>Yann Métrailler</td>
+            <td>yann.metrailler@gmail.com</td>
+            <td>OK</td>
+            <td>8.5 / 8.0</td>
+        </tr>
+
+        <tr class="issuerow">
+            <td>Sabrina Métrailler</td>
+            <td>sabi.metrailler@gmail.com</td>
+            <td>MISSING</td>
+            <td>4.5 / 8.0</td>
+        </tr>
+
+        ##            #foreach ($user in $action.getActiveUsers())
+        ##            <tr class="issuerow">
+        ##                <td>$user.user.displayName</td>
+        ##                <td>$user.user.emailAddress</td>
+        ##                <td></td>
+        ##                <td>$user.workedHours / $user.expectedHours</td>
+        ##            </tr>
+        ##            #end
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>
